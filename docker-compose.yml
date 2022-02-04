@@ -9,7 +9,7 @@ services:
       - myst_net
       - nginx_proxy
     ports:
-      #- '4449:4449'
+      - '127.0.0.1:4449:4449'
       - '59850-60000:59850-60000'
     container_name: myst
     cap_add:
