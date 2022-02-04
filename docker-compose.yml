@@ -35,6 +35,8 @@ services:
     
 networks:
   myst_net:
+    name: myst_net
     driver: bridge
   nginx_proxy:
+    name: nginx_proxy
     driver: bridge   
