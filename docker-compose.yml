@@ -1,0 +1,40 @@
+version: '3.3'
+services:
+  node:
+    image: mysteriumnetwork/myst:latest
+    command:
+      - '--udp.ports=59850:60000'
+      - 'service --agreed-terms-and-conditions'
+    networks:
+      - myst_net
+      - nginx_proxy
+    ports:
+      #- '4449:4449'
+      - '59850-60000:59850-60000'
+    container_name: myst
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - '/var/lib/mysterium-node:/var/lib/mysterium-node'
+      - '/etc/mysterium-node:/etc/mysterium-node'
+    restart: unless-stopped
+  nginx:
+    image: ghcr.io/linuxserver/swag:latest
+    container_name: swag_rh
+    cap_add:
+      - NET_ADMIN
+    env_file: .env
+    networks:
+      - nginx_proxy
+    volumes:
+      - /etc/swag:/config
+    ports:
+      - 443:443
+      - 80:80
+    restart: unless-stopped
+    
+networks:
+  myst_net:
+    driver: bridge
+  nginx_proxy:
+    driver: bridge   
