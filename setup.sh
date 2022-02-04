@@ -16,20 +16,15 @@ write_pid(){
 }
 
 # Create sys users
-useradd --system --no-create-home --shell=/sbin/nologin wp_rh
-useradd --system --no-create-home --shell=/sbin/nologin db_rh
-id_wp=$(id -u wp_rh)
-id_db=$(id -u db_rh)
+useradd --system --no-create-home --shell=/sbin/nologin swag
+id_swag=$(id -u swag)
 
 envfile=./.env
 
-write_pid $envfile PUIDdb $id_db
-write_pid $envfile PGIDdb $id_db
+write_pid $envfile PUID $id_swag
+write_pid $envfile PGID $id_swag
 
-write_pid $envfile PUIDwp $id_wp
-write_pid $envfile PGIDwp $id_wp
-
-mkdir -p /appdata/romanahumus
+mkdir -p /etc/swag
 
 #docker-compose up -d
 
