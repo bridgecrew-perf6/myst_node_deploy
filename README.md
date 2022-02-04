@@ -1,2 +1,2 @@
 # myst_node_deploy
- Docker deployment for myst nodes
+Docker deployment for myst nodes
