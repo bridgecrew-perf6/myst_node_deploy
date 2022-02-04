@@ -20,7 +20,7 @@ services:
     restart: unless-stopped
   nginx:
     image: ghcr.io/linuxserver/swag:latest
-    container_name: swag_rh
+    container_name: swag
     cap_add:
       - NET_ADMIN
     env_file: .env
