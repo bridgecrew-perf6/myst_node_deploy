@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3'
 services:
   node:
     image: mysteriumnetwork/myst:latest
@@ -7,7 +7,7 @@ services:
       - 'service --agreed-terms-and-conditions'
     networks:
       - myst_net
-      - nginx_proxy
+#      - nginx_proxy
     ports:
       - '127.0.0.1:4449:4449'
       - '59850-60000:59850-60000/udp'
@@ -18,25 +18,25 @@ services:
       - '/var/lib/mysterium-node:/var/lib/mysterium-node'
       - '/etc/mysterium-node:/etc/mysterium-node'
     restart: unless-stopped
-  nginx:
-    image: ghcr.io/linuxserver/swag:latest
-    container_name: swag
-    cap_add:
-      - NET_ADMIN
-    env_file: .env
-    networks:
-      - nginx_proxy
-    volumes:
-      - /etc/swag:/config
-    ports:
-      - 443:443
-      - 80:80
-    restart: unless-stopped
+#  nginx:
+#    image: ghcr.io/linuxserver/swag:latest
+#    container_name: swag
+#    cap_add:
+#      - NET_ADMIN
+#    env_file: .env
+#    networks:
+#      - nginx_proxy
+#    volumes:
+#      - /etc/swag:/config
+#    ports:
+#      - 443:443
+#      - 80:80
+#    restart: unless-stopped
     
 networks:
   myst_net:
     name: myst_net
     driver: bridge
-  nginx_proxy:
-    name: nginx_proxy
-    driver: bridge   
+#  nginx_proxy:
+#    name: nginx_proxy
+#    driver: bridge   
