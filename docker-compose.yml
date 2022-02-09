@@ -18,11 +18,12 @@ services:
       - '/var/lib/mysterium-node:/var/lib/mysterium-node'
       - '/etc/mysterium-node:/etc/mysterium-node'
     restart: unless-stopped
-    watchtower:
-      image: containrrr/watchtower
-      volumes:
-        - /var/run/docker.sock:/var/run/docker.sock
-      restart: unless-stopped
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
 #  nginx:
 #    image: ghcr.io/linuxserver/swag:latest
 #    container_name: swag
