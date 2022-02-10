@@ -3,7 +3,7 @@ services:
   node:
     image: mysteriumnetwork/myst:latest
     command:
-      - '--udp.ports=57000:60000'
+      - '--udp.ports=58000:60000'
       - 'service --agreed-terms-and-conditions'
     labels:
       - com.centurylinklabs.watchtower.enable=true
