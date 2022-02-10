@@ -3,14 +3,14 @@ services:
   node:
     image: mysteriumnetwork/myst:latest
     command:
-      - '--udp.ports=59850:60000'
+      - '--udp.ports=57000:60000'
       - 'service --agreed-terms-and-conditions'
     networks:
       - myst_net
 #      - nginx_proxy
     ports:
       - '${WG_IFACE_IP}:4449:4449'
-      - '59850-60000:59850-60000/udp'
+      - '57000-60000:57000-60000/udp'
     container_name: myst
     cap_add:
       - NET_ADMIN
