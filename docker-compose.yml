@@ -3,7 +3,7 @@ services:
   node:
     image: mysteriumnetwork/myst:latest
     command:
-      - '--udp.ports=59000:60000'
+      - '--udp.ports=58200:60000'
       - 'service --agreed-terms-and-conditions'
     labels:
       - com.centurylinklabs.watchtower.enable=true
@@ -11,7 +11,7 @@ services:
       - myst_net
     ports:
       - '${WG_IFACE_IP}:4449:4449'
-      - '59000-60000:59000-60000/udp'
+      - '58200-60000:58200-60000/udp'
     container_name: myst
     cap_add:
       - NET_ADMIN
